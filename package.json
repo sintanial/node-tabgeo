@@ -1,6 +1,7 @@
 {
   "name": "tabgeo",
   "version": "0.1.0",
+  "bin" : "./bin/tabgeo-sync",
   "repository": {
     "type": "git",
     "url": "git://github.com/sintanial/node-tabgeo"

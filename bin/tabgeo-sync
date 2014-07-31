@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var http = require('http');
+var crypto = require('crypto');
+
+function download(filepath) {
+    http.get('http://tabgeo.com/api/v4/country/db/get/', function (res) {
+        if (res.statusCode !== 200) throw new Error('Resource not available');
+        var wstream = fs.createWriteStream(filepath);
+        res.pipe(wstream);
+    });
+}
+
+function sync(filepath, force) {
+    var exists = fs.existsSync(filepath);
+    if (!force && exists) {
+        var md5 = crypto.createHash('md5');
+        var file = fs.readFileSync(filepath);
+        http.get('http://tabgeo.com/api/v4/country/db/md5/', function (res) {
+            if (res.statusCode !== 200) throw new Error('Resource not available');
+
+            var hash = '';
+            res.on('data', function (chunk) {
+                hash += chunk.toString();
+            });
+            res.on('end', function () {
+                if (md5.update(file).digest('hex') !== hash) {
+                    download(filepath);
+                } else {
+//                    console.log('actually db');
+                }
+            });
+        });
+    } else {
+        download(filepath);
+    }
+}
+
+var filepath = process.argv[2];
+var force = false;
+process.argv.forEach(function (item) {
+    if (item == '--force') force = true;
+});
+
+sync(filepath, force);
