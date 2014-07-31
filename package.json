@@ -1,0 +1,11 @@
+{
+    "name": "tabgeo",
+    "version": "0.1",
+    "repository": "sintanial/node-tabgeo",
+    "description": "JavaScript implementation of TabGeo",
+    "keywords": ["tabgeo", "geoip", "ip", "ipv4"],
+    "dependencies": {
+        "binary": "~0.3"
+    },
+    "license": "MIT"
+}
