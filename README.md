@@ -13,7 +13,8 @@ $ npm install tabgeo
 
 ```js
 var getCountryCode = require('tabgeo')('path/to/tabgeo.dat');
-getCountryCode(ip);
+var code = getCountryCode('31.192.104.0');
+console.log(code); // RU
 ```
 
 # License
