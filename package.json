@@ -1,11 +1,29 @@
 {
-    "name": "tabgeo",
-    "version": "0.1",
-    "repository": "sintanial/node-tabgeo",
-    "description": "JavaScript implementation of TabGeo",
-    "keywords": ["tabgeo", "geoip", "ip", "ipv4"],
-    "dependencies": {
-        "binary": "~0.3"
-    },
-    "license": "MIT"
+  "name": "tabgeo",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sintanial/node-tabgeo"
+  },
+  "description": "JavaScript implementation of TabGeo",
+  "keywords": [
+    "tabgeo",
+    "geoip",
+    "ip",
+    "ipv4"
+  ],
+  "dependencies": {
+    "binary": "~0.3"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sintanial/node-tabgeo/issues"
+  },
+  "homepage": "https://github.com/sintanial/node-tabgeo",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sintanial <sintanial@gmail.com>"
 }
