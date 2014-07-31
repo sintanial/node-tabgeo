@@ -37,10 +37,21 @@ function sync(filepath, force) {
     }
 }
 
-var filepath = process.argv[2];
 var force = false;
-process.argv.forEach(function (item) {
-    if (item == '--force') force = true;
-});
+
+var argv = process.argv;
+
+for (var i = 0, l = argv.length; i < l; i++) {
+    if (argv[i] == '--force') force = true;
+    if (argv[i] == '-path') filepath = argv[i + 1];
+}
+
+if (!filepath) {
+    var filepath = process.argv[2];
+}
+
+if (!filepath) {
+    throw new Error('Invalid save path');
+}
 
 sync(filepath, force);
